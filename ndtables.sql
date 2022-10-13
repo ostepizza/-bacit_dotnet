@@ -86,7 +86,7 @@ CREATE TABLE `commentssug` (
     `suggestion_id` INT(11) NOT NULL, 
     `commentsug_time` TIMESTAMP NOT NULL, 
     `commentsug_text` VARCHAR(255) NOT NULL, 
-    `emp_id` INT(11) NOT NULL, 
+    `emp_nr` INT(11) NOT NULL, 
     PRIMARY KEY (`commentsug_id`),
     FOREIGN KEY (`emp_nr`) REFERENCES employees(`emp_nr`)
 );
@@ -97,7 +97,21 @@ CREATE TABLE `commentsrep` (
     `repairs_id` INT(11) NOT NULL, 
     `commentrep_time` TIMESTAMP NOT NULL, 
     `commentrep_text` VARCHAR(255) NOT NULL, 
-    `emp_id` INT(11) NOT NULL, 
+    `emp_nr` INT(11) NOT NULL, 
     PRIMARY KEY (`commentrep_id`),
     FOREIGN KEY (`emp_nr`) REFERENCES employees(`emp_nr`)
 );
+
+-- Creates a user and a team
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`) VALUES ('0', 'Super', 'User', NULL, NULL, NULL, '1234');
+INSERT INTO `superusers` (`su_id`, `emp_nr`) VALUES (NULL, '0');
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'The Test Team', '0');
+SELECT * FROM `employees`;
+SELECT * FROM `superusers`;
+SELECT * FROM `teams`;
+
+-- Shows that the new user is also on the superuser-table and which superuser-id the user has received
+SELECT employees.emp_nr, employees.emp_fname, employees.emp_lname, superusers.emp_id, superusers.su_id 
+FROM employees 
+INNER JOIN superusers 
+ON employees.emp_id=superusers.emp_id AND employees.emp_id = 0;
