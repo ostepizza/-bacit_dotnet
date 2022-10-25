@@ -11,6 +11,7 @@ CREATE TABLE `employees` (
     `emp_email` VARCHAR(255) NULL,
     `team_id` INT(11) NULL,
     `emp_pword` VARCHAR(255) NOT NULL,
+    `emp_active` TINYINT(1) NOT NULL DEFAULT '0',
     PRIMARY KEY (`emp_nr`),
     UNIQUE (`emp_email`)
 );
@@ -84,7 +85,7 @@ CREATE TABLE `repairs` (
 CREATE TABLE `commentssug` ( 
     `commentsug_id` INT(11) NOT NULL AUTO_INCREMENT, 
     `suggestion_id` INT(11) NOT NULL, 
-    `commentsug_time` TIMESTAMP NOT NULL, 
+    `commentsug_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(), 
     `commentsug_text` VARCHAR(255) NOT NULL, 
     `emp_nr` INT(11) NOT NULL, 
     PRIMARY KEY (`commentsug_id`),
@@ -95,7 +96,7 @@ CREATE TABLE `commentssug` (
 CREATE TABLE `commentsrep` (
     `commentrep_id` INT(11) NOT NULL AUTO_INCREMENT, 
     `repairs_id` INT(11) NOT NULL, 
-    `commentrep_time` TIMESTAMP NOT NULL, 
+    `commentrep_time` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP(), 
     `commentrep_text` VARCHAR(255) NOT NULL, 
     `emp_nr` INT(11) NOT NULL, 
     PRIMARY KEY (`commentrep_id`),
