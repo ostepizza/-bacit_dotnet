@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link reL="shortcut icon" href="../assets/img/favicon.png" type="image/ico">
+    <title>userpage</title>
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin.css">
+    <link href="https://fonts.googleapis.com/css?family=Nunito|Lato|Open+Sans|Raleway|Roboto" rel="stylesheet">
+
+</head>
+
+<style>
+
+    .profile-img img{
+        width: 70%;
+        height: 100%;
+    }
+    .profile-img .file {
+        position: relative;
+        overflow: hidden;
+        margin-top: -20%;
+        width: 70%;
+        border: none;
+        border-radius: 0;
+        font-size: 15px;
+        background: #212529b8;
+    }
+    .profile-img .file input {
+        position: absolute;
+        opacity: 0;
+        right: 0;
+        top: 0;
+    }
+
+
+
+
+</style>
+</html>
+<body>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-lg-2 menu mobileHide">
+            <div class="logged-in-as">
+                Logged in as USER<br>
+                Last activity: timestamp
+            </div>
+            <a href="#"><div class="btn">Hjem</div></a>
+            <a href="#"><div class="btn">Reparasjoner</div></a>
+            <a href="#"><div class="btn">Forslag</div></a>
+            <a href="#"><div class="btn">Min konto</div></a>
+            <a href="#"><div class="btn btn-last">Admin</div></a>
+            <div class="menu"><img src="img/logo.svg"></div>
+            <a href="#"><div class="btn">Logg ut</div></a>
+        </div>
+
+        <div class="col-lg-2 menu mobileShow" style="height: auto;">
+            <nav class="navbar navbar-light">
+                <!--<a class="navbar-brand" href="#"><img src="../assets/img/logo.png" style="width:50%;"></a>-->
+                <p class="logged-in-as">Logged in as USER'<br>
+                    Last activity: TIMESTAMP</p>
+
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarMain">
+                    <ul class="navbar-nav mr-auto">';
+                        <li class="nav-item"><a class="nav-link" href="#">Hjem</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Reparasjoner</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Forslag</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Min konto</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Admin</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#">Logg ut</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        <div class="content col-lg-8">
+            <div class="row">
+                <div class="col-lg-1"></div>
+                <div class="col-lg-10 infoText">
+                    <!-- HTML go here -->
+
+                    <div class="container emp-profile">
+                        <form method="post">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="profile-img" style="margin-top: 80px;">
+                                        <img src="https://avatars.akamai.steamstatic.com/53b122596546700879f9aa226b1cbb57d0ec7bff_full.jpg" alt=""/>
+                                        <div class="file btn btn-lg btn-primary">
+                                            Endre Profilbilde
+                                            <input type="file" name="file"/>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="profile-head" style="margin-top: 80px;">
+                                        <h2>
+                                            Mister Garf
+                                        </h2>
+                                        <h6>
+                                            IKT-ansvarlig
+                                        </h6>
+                                        <ul class="nav nav-tabs" id="myTab" role="tablist" >
+                                            <li class="nav-item">
+                                                <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Kontaktinfo</a>
+                                            </li>
+                                            <li class="nav-item">
+                                                <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Forslag</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <fieldset class="clearfix">
+
+                                        <div>
+                                            <label for="username">Nytt passord:</label><br>
+                                            <input type="text" id="username" name="username" style="width: fit-content;">
+                                        </div>
+
+                                        <div>
+                                            <label for="pass">Bekreft passord:</label><br>
+                                            <input type="password" id="pass" name="password" style="width: fit-content;">
+                                        </div><br>
+
+                                        <input type="submit" value="Endre passord" style="width: fit-content;">
+
+                                    </fieldset>
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="tab-content profile-tab" id="myTabContent">
+                                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Ansatt-ID</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>001</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Navn</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Mister Garf</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Email</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>lasagner@gmail.com</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Telefon-nummer</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>+47 97878582</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Avdeling</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>IKT</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Team</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>Team-01</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Pågående forslag</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>2</p>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    <label>Alle forslag</label>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <p>7</p>
+                                                </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+
+                    <!-- HTML end here -->
+                </div>
+                <div class="col-lg-1"></div>
+            </div>
+        </div>
+
+        <!--<div class="col-lg-2 menu" style="height:100%;">yeehaw</div>-->
+
+    </div>
+</div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+</body>
+</html>
