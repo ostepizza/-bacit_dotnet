@@ -315,9 +315,9 @@ footer {
     border-bottom: #000000 solid 2px;
 }
 
-.content button, .content input {
+/*.content button, .content input {
     width:25%;
-}
+}*/
 
 .content .btn:hover {
     background-color: #FFFFFF;
