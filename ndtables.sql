@@ -137,11 +137,17 @@ INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'Pro
 UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '005';
 
 -- Adding statuses
-INSERT INTO `status` (`status_id`, `status_title`) VALUES (0, 'Ikke vurdert');
-INSERT INTO `status` (`status_id`, `status_title`) VALUES (1, 'Godkjent');
-INSERT INTO `status` (`status_id`, `status_title`) VALUES (2, 'Ikke godkjent');
-INSERT INTO `status` (`status_id`, `status_title`) VALUES (3, 'Pågår');
-INSERT INTO `status` (`status_id`, `status_title`) VALUES (4, 'Fullført');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (NULL, 'Ikke vurdert');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (NULL, 'Godkjent');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (NULL, 'Avslått');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (NULL, 'Pågår');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (NULL, 'Fullført');
+
+UPDATE `status` SET `status_id` = 0 WHERE `status_title` = 'Ikke vurdert';
+UPDATE `status` SET `status_id` = 1 WHERE `status_title` = 'Godkjent';
+UPDATE `status` SET `status_id` = 2 WHERE `status_title` = 'Avslått';
+UPDATE `status` SET `status_id` = 3 WHERE `status_title` = 'Pågår';
+UPDATE `status` SET `status_id` = 4 WHERE `status_title` = 'Fullført';
 
 -- Adding suggestions
 INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
