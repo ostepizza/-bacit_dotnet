@@ -11,7 +11,7 @@ CREATE TABLE `employees` (
     `emp_email` VARCHAR(255) NULL,
     `team_id` INT(11) NULL,
     `emp_pword` VARCHAR(255) NOT NULL,
-    `emp_active` TINYINT(1) NOT NULL DEFAULT '0',
+    `emp_active` TINYINT(1) NOT NULL DEFAULT '1',
     PRIMARY KEY (`emp_nr`),
     UNIQUE (`emp_email`)
 );
@@ -27,8 +27,7 @@ CREATE TABLE `teams` (
 );
 
 -- Adds foreign key between employees and teams
-ALTER TABLE `employees`
-ADD FOREIGN KEY (`team_id`) REFERENCES teams(`team_id`);
+ALTER TABLE `employees` ADD FOREIGN KEY (`team_id`) REFERENCES teams(`team_id`);
 
 -- Create table for superusers
 CREATE TABLE `superusers` (
@@ -42,7 +41,7 @@ CREATE TABLE `superusers` (
 -- Create table for statuses
 CREATE TABLE `status` (
     `status_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `status_title` VARCHAR(11) NOT NULL,
+    `status_title` VARCHAR(250) NOT NULL,
     PRIMARY KEY (`status_id`),
     UNIQUE (`status_title`)
 );
@@ -103,16 +102,85 @@ CREATE TABLE `commentsrep` (
     FOREIGN KEY (`emp_nr`) REFERENCES employees(`emp_nr`)
 );
 
--- Creates a user and a team
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`) VALUES ('0', 'Super', 'User', NULL, NULL, NULL, '1234');
-INSERT INTO `superusers` (`su_id`, `emp_nr`) VALUES (NULL, '0');
-INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'The Test Team', '0');
-SELECT * FROM `employees`;
-SELECT * FROM `superusers`;
-SELECT * FROM `teams`;
+-- CREATING EXAMPLE INFO
+-- Adding employees
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('000', 'Super', 'User', NULL, NULL, NULL, '1234', 1);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('001', 'Jens', 'Jensemann', NULL, NULL, NULL, '4321', 1);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('002', 'Burg', 'Burgers', NULL, NULL, NULL, '9999', 1);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('003', 'Jan', 'Banan', NULL, NULL, NULL, '8888', 0);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('004', 'Jeff', 'Pringle', NULL, NULL, NULL, '7777', 1);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('005', 'Lucky', 'Luke', NULL, NULL, NULL, '5555', 1);
 
--- Shows that the new user is also on the superuser-table and which superuser-id the user has received
+-- Adding a superuser
+INSERT INTO `superusers` (`su_id`, `emp_nr`) VALUES (NULL, '000');
+
+-- Shows that the new IT user is also on the superuser-table and which superuser-id the user has received
 SELECT employees.emp_nr, employees.emp_fname, employees.emp_lname, superusers.emp_id, superusers.su_id 
 FROM employees 
 INNER JOIN superusers 
 ON employees.emp_id=superusers.emp_id AND employees.emp_id = 0;
+
+-- Adding teams and updating employees with team ID
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'IT', '000');
+UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '000';
+
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'Administrasjon', '001');
+UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '001';
+
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'Økonomi', '002');
+UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '002';
+
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'Produksjon Avd. A', '004');
+UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '004';
+
+INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'Produksjon Avd. B', '005');
+UPDATE `employees` SET `team_id` = LAST_INSERT_ID() WHERE `emp_nr` = '005';
+
+-- Adding statuses
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (0, 'Ikke vurdert');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (1, 'Godkjent');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (2, 'Ikke godkjent');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (3, 'Pågår');
+INSERT INTO `status` (`status_id`, `status_title`) VALUES (4, 'Fullført');
+
+-- Adding suggestions
+INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
+SELECT NULL, 'Cola kjøleskap hos IT', 'Det er tungt arbeid å jobbe med PC. Derfor synes jeg at vi i IT burde få oss et helt eget Cola-themed kjøleskap nede hos oss.', '2023-01-28', NULL, 0, '000', '001', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '000';
+
+INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
+SELECT NULL, 'Lås opp døra', 'Vi er lei av å være innelåst i kjelleren!! Få oss ut!!!', '2022-12-24', NULL, 0, '002', '001', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '002';
+
+INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
+SELECT NULL, 'Nye SSDer', 'PC slow need harder drives', '2023-06-01', NULL, 0, '000', '002', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '000';
+
+INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
+SELECT NULL, 'Ny maskin', 'Vi trenger en ny maskin', '2023-04-14', NULL, 0, '004', '001', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '004';
+
+INSERT INTO `suggestions` (`suggestion_id`, `suggestion_title`, `suggestion_description`, `suggestion_deadline`, `suggestion_enddate`, `status_id`, `suggested_emp_nr`, `responsible_emp_nr`, `team_id`)
+SELECT NULL, 'Ny kaffetrakter', 'Blir for lite kaffe i produksjonshallen. Vi trenger en ny ein!', '2023-01-28', NULL, 0, '005', '002', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '005';
+
+-- Adding repairs
+INSERT INTO `repairs` (`repairs_id`, `repairs_title`, `repairs_description`, `repairs_deadline`, `repairs_enddate`, `repairs_cost`, `status_id`, `emp_nr`, `team_id`)
+SELECT NULL, 'Ødelagt PSU', 'En maskin er nede pga. ødelagt PSU.', '2022-12-15', NULL, 450, 0, '000', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '000';
+
+INSERT INTO `repairs` (`repairs_id`, `repairs_title`, `repairs_description`, `repairs_deadline`, `repairs_enddate`, `repairs_cost`, `status_id`, `emp_nr`, `team_id`)
+SELECT NULL, 'Ødelagt tannhjul', 'Maskinen mista et tannhjul og er ute av drift', '2022-12-10', NULL, 1250, 0, '005', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '005';
+
+INSERT INTO `repairs` (`repairs_id`, `repairs_title`, `repairs_description`, `repairs_deadline`, `repairs_enddate`, `repairs_cost`, `status_id`, `emp_nr`, `team_id`)
+SELECT NULL, 'Verktøy gikk i stykker', 'En sag og to skrujern gikk i stykker', '2022-11-30', NULL, 650, 0, '004', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '004';
+
+INSERT INTO `repairs` (`repairs_id`, `repairs_title`, `repairs_description`, `repairs_deadline`, `repairs_enddate`, `repairs_cost`, `status_id`, `emp_nr`, `team_id`)
+SELECT NULL, 'Ødelagt sandebånd', 'Sandebåndet er for glatt og må byttes', '2022-12-30', NULL, 2000, 0, '005', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '005';
+
+INSERT INTO `repairs` (`repairs_id`, `repairs_title`, `repairs_description`, `repairs_deadline`, `repairs_enddate`, `repairs_cost`, `status_id`, `emp_nr`, `team_id`)
+SELECT NULL, 'Tett malesprøyte', 'Malesprøyten er tett og må dyprenses', '2022-12-5', NULL, 200, 0, '004', `employees`.`team_id`
+FROM `employees` WHERE `employees`.`emp_nr` = '004';
