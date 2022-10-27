@@ -118,7 +118,7 @@ INSERT INTO `superusers` (`su_id`, `emp_nr`) VALUES (NULL, '000');
 SELECT employees.emp_nr, employees.emp_fname, employees.emp_lname, superusers.emp_nr, superusers.su_id 
 FROM employees 
 INNER JOIN superusers 
-ON employees.emp_id=superusers.emp_nr AND employees.emp_nr = 0;
+ON employees.emp_nr=superusers.emp_nr AND employees.emp_nr = 0;
 
 -- Adding teams and updating employees with team ID
 INSERT INTO `teams` (`team_id`, `team_name`, `leader_emp_nr`) VALUES (NULL, 'IT', '000');
