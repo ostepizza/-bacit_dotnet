@@ -203,32 +203,32 @@ UPDATE `repairs` SET `repairs_id` = 4 WHERE `repairs_title` = 'Tett malesprøyte
 
 -- Adding suggestion comments
 INSERT INTO `commentsug` (`commentsug_id`, `suggestion_id`, `commentsug_time`, `commentsug_text`, `emp_nr`)
-VALUES (NULL, 0, CURRENT_DATETIME(), 'Bra forslag! Cola er godt!', '001');
+VALUES (NULL, 0, NOW(), 'Bra forslag! Cola er godt!', '001');
 
 INSERT INTO `commentsug` (`commentsug_id`, `suggestion_id`, `commentsug_time`, `commentsug_text`, `emp_nr`)
-VALUES (NULL, 1, CURRENT_DATETIME(), 'Elendig forslag...', '001');
+VALUES (NULL, 1, NOW(), 'Elendig forslag...', '001');
 
 INSERT INTO `commentsug` (`commentsug_id`, `suggestion_id`, `commentsug_time`, `commentsug_text`, `emp_nr`)
-VALUES (NULL, 2, CURRENT_DATETIME(), 'Det høres bra ut.', '001');
+VALUES (NULL, 2, NOW(), 'Det høres bra ut.', '001');
 
 INSERT INTO `commentsug` (`commentsug_id`, `suggestion_id`, `commentsug_time`, `commentsug_text`, `emp_nr`)
-VALUES (NULL, 3, CURRENT_DATETIME(), 'Oi, dette hørtes dyrt ut!!', '001');
+VALUES (NULL, 3, NOW(), 'Oi, dette hørtes dyrt ut!!', '001');
 
 INSERT INTO `commentsug` (`commentsug_id`, `suggestion_id`, `commentsug_time`, `commentsug_text`, `emp_nr`)
-VALUES (NULL, 4, CURRENT_DATETIME(), 'KOFFEIN :DDDD', '001');
+VALUES (NULL, 4, NOW(), 'KOFFEIN :DDDD', '001');
 
 -- Adding repair comments
 INSERT INTO `commentrep` (`commentrep_id`, `repairs_id`, `commentrep_time`, `commentrep_text`, `emp_nr`)
-VALUES (NULL, 0, CURRENT_DATETIME(), 'Viktig å få fiksa!', '001');
+VALUES (NULL, 0, NOW(), 'Viktig å få fiksa!', '001');
 
 INSERT INTO `commentrep` (`commentrep_id`, `repairs_id`, `commentrep_time`, `commentrep_text`, `emp_nr`)
-VALUES (NULL, 1, CURRENT_DATETIME(), 'Bra å få ordna!', '001');
+VALUES (NULL, 1, NOW(), 'Bra å få ordna!', '001');
 
 INSERT INTO `commentrep` (`commentrep_id`, `repairs_id`, `commentrep_time`, `commentrep_text`, `emp_nr`)
-VALUES (NULL, 2, CURRENT_DATETIME(), 'Hvordan klarte du å ødelegge en sag???', '001');
+VALUES (NULL, 2, NOW(), 'Hvordan klarte du å ødelegge en sag???', '001');
 
 INSERT INTO `commentrep` (`commentrep_id`, `repairs_id`, `commentrep_time`, `commentrep_text`, `emp_nr`)
-VALUES (NULL, 3, CURRENT_DATETIME(), 'Helt enig!', '001');
+VALUES (NULL, 3, NOW(), 'Helt enig!', '001');
 
 INSERT INTO `commentrep` (`commentrep_id`, `repairs_id`, `commentrep_time`, `commentrep_text`, `emp_nr`)
-VALUES (NULL, 4, CURRENT_DATETIME(), 'Deilig med billige reparasjoner :D', '001');
+VALUES (NULL, 4, NOW(), 'Deilig med billige reparasjoner :D', '001');
