@@ -3,10 +3,42 @@
 }
 
 @model bacit_dotnet.MVC.Models.RazorViewModel
-<h1>Velkommen, bruker!</h1>
-@{
+
+<h1>Velkommen  </h1> @{
     
     <h1>@Model.Content</h1>
 }
+                    <h5>Antall forslag du har sendt inn: 7</h5>
+
+                    <div>
+                        <canvas id="pieChart" style="width: 500px; margin-top: 50px;”"></canvas>
+                    </div>
+                    
+
+
 
 <a asp-controller="Suggestions" asp-action="Index">Link til registreringsskjema</a>
+
+
+
+<!-- For Pie Chart-->
+<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3"></script>
+
+<script>
+    //pie
+    var ctxP = document.getElementById("pieChart").getContext('2d');
+    var myPieChart = new Chart(ctxP, {
+        type: 'pie',
+        data: {
+            labels: ["Godkjente Forslag", "Avslåtte Forslag", "Forslag Under Vurdering" ],
+            datasets: [{
+                data: [2, 1, 4,],
+                backgroundColor: ["#008000", "#F7464A", "#4D5360"],
+                hoverBackgroundColor: ["#228B22", "#FF5A5E", "#616774"]
+            }]
+        },
+        options: {
+            responsive: true
+        }
+    });
+</script>
