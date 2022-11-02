@@ -40,7 +40,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;"); //Regular Dapper
+                var users = connection.Query<UserEntity>("Select emp_nr, emp_fname, emp_lname, emp_email,emp_phone, emp_pword,team_id from employees;"); //Regular Dapper
                 return users.ToList();
             }
         }

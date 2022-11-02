@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection())
             {
-                var reader = ReadData("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;", connection);
+                var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_pword,emp_phone,team_id from employees;", connection);
                 var users = new List<UserEntity>();
                 while (reader.Read())
                 {
@@ -39,12 +39,13 @@ namespace bacit_dotnet.MVC.Repositories
         private static UserEntity MapUserFromReader(IDataReader reader)
         {
             var user = new UserEntity();
-            user.Id = reader.GetInt32(0);
-            user.Name = reader.GetString(1);
-            user.Email = reader.GetString(2);
-            user.Password = reader.GetString(3);
-            user.EmployeeNumber = reader.GetString(4);
-            user.Team = reader.GetString(5);
+            user.emp_nr = reader.GetInt32(0);
+            user.emp_fname = reader.GetString(1);
+            user.emp_lname = reader.GetString(2);
+            user.emp_email = reader.GetString(3);
+            user.emp_pword = reader.GetString(4);
+            user.EmployeeNumber = reader.GetString(5);
+            user.Team = reader.GetString(6);
             user.Role = reader.GetString(6);
             return user;
         }
