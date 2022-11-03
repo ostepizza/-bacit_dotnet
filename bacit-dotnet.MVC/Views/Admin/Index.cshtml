@@ -4,4 +4,71 @@
 
 @model bacit_dotnet.MVC.Models.RazorViewModel
 
+<style>
+    .container {
+        
+    }
+
+    .buttnContainer {
+        padding: 30px;
+
+    }
+
+    #leggTilBtn {
+        border: none;
+        background-color: lightgreen;
+        width: 20%;
+        height: 50px;
+        margin-top: 10px;
+        border-radius: 5px; 
+       
+
+    }
+
+        #leggTilBtn:hover {
+
+            background-color: mediumseagreen;
+            font-weight: bold;
+        }
+
+        #redigerBtn {
+        border: none;
+        background-color: lightgreen;
+        width: 20%; 
+        height: 50px;
+        margin-top: 10px;
+        border-radius: 5px;
+        
+        }
+
+        #redigerBtn:hover {
+
+            background-color: mediumseagreen;
+            font-weight: bold;
+        
+        
+        }
+</style>
+
+
 <h1>Dette er siden for Admin</h1>
+
+<div class="cumtainer">
+    <div class="buttnContainer">
+        <label>Legg til ny bruker</label>
+        <br />
+        <button id="leggTilBtn">Legg til</button>
+    </div>
+    <div class="buttnContainer">
+        <label>Rediger eksisterende bruker</label>
+        <br />
+        <button id="redigerBtn">Rediger</button>
+    </div>
+
+    
+</div>
+
+
+
+
+
