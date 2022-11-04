@@ -20,15 +20,15 @@ namespace bacit_dotnet.MVC.Controllers
             model.Users = userRepository.GetUsers();
             if (email != null)
             {
-                var currentUser = model.Users.FirstOrDefault(x => x.Email == email);
+                var currentUser = model.Users.FirstOrDefault(x => x.emp_email == email);
                 if (currentUser != null)
                 {
-                    model.EmployeeNumber = currentUser.EmployeeNumber;
-                    model.Email = currentUser.Email;
-                    model.Name = currentUser.Name;
-                    model.Role = currentUser.Role;
-                    model.Password = currentUser.Password;
-                    model.Team = currentUser.Team;
+                    model.emp_nr = currentUser.emp_nr;
+                    model.emp_fname = currentUser.emp_fname;
+                    model.emp_lname = currentUser.emp_lname;
+                    model.emp_email = currentUser.emp_email;
+                    model.emp_phone = currentUser.emp_phone;
+                    model.emp_pword = currentUser.emp_pword;
                 }
             }
             return View(model);

@@ -23,7 +23,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection())
             {
-                var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_pword,emp_phone,team_id from employees;", connection);
+                var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_pword,emp_phone,team_id from Users;", connection);
                 var users = new List<UserEntity>();
                 while (reader.Read())
                 {

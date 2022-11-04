@@ -18,7 +18,7 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDB"));
             connection.Open();
-            var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_email, emp_phone, team_id, emp_pword from employees;", connection);
+            var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_email, emp_phone, emp_pword from users;", connection);
             var users = new List<UserEntity>();
             while (reader.Read())
             {
@@ -28,8 +28,7 @@ namespace bacit_dotnet.MVC.DataAccess
                 user.emp_lname = reader.GetString(2);
                 user.emp_email = reader.GetString(3);
                 user.emp_phone = reader.GetString(4);
-                user.team_id = reader.GetString(5);
-                user.emp_pword = reader.GetString(6);
+                user.emp_pword = reader.GetString(5);
 
                 Console.WriteLine(reader.GetString(3));
                 users.Add(user);
