@@ -17,7 +17,6 @@ h1 {
     
 }
 
-
 .outer-wrapper {
     margin: 10px;
     margin-left: 20px;
@@ -30,6 +29,7 @@ h1 {
 
     
 }
+
 .table-wrapper {
 
     overflow-y: scroll;
@@ -44,7 +44,6 @@ h1 {
     
 }
 
-
 table {
     
     min-width: max-content;
@@ -53,8 +52,6 @@ table {
     border-spacing: 0px;    
     
 }
-
-
 
 table th{
     position: sticky; 
@@ -70,8 +67,6 @@ table th{
     border: 1.5px solid black;
 
 } 
-
-
 
 table th, table td {
     
@@ -244,7 +239,7 @@ table td {
     </table>
 </div>
 </div>
-<a href="#" class="button">Legg til ny reparasjon</a>
+<a asp-controller="RepairsDetailed" asp-action="Index" class="button">Legg til ny reparasjon</a>
 </body>
 
 </html>
