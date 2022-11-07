@@ -40,12 +40,11 @@ namespace bacit_dotnet.MVC.Controllers
 
             UserEntity newUser = new UserEntity
             {
-                Name = model.Name,
-                Email = model.Email,
-                EmployeeNumber = model.EmployeeNumber,
-                Password = model.Password,
-                Role = model.Role,
-                Team = model.Team,
+                emp_fname = model.emp_fname,
+                emp_lname = model.emp_lname,
+                emp_email = model.emp_email,
+                emp_phone = model.emp_phone,
+                emp_pword = model.emp_pword,
             };
             userRepository.Save(newUser);
             return RedirectToAction("Index");

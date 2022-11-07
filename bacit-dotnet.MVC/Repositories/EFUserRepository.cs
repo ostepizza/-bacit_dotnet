@@ -22,7 +22,7 @@ namespace bacit_dotnet.MVC.Repositories
 
         private UserEntity? GetUserByEmail(string email)
         {
-            return dataContext.Users.FirstOrDefault(x => x.Email == email);
+            return dataContext.Users.FirstOrDefault(x => x.emp_email == email);
         }
 
         public List<UserEntity> GetUsers()
@@ -32,19 +32,18 @@ namespace bacit_dotnet.MVC.Repositories
 
         public void Save(UserEntity user)
         {
-            var existingUser = GetUserByEmail(user.Email);
+            var existingUser = GetUserByEmail(user.emp_email);
             if (existingUser == null)
             {
                 dataContext.Users.Add(user);
             }
             else
             {
-                existingUser.Email = user.Email;
-                existingUser.EmployeeNumber = user.EmployeeNumber;
-                existingUser.Name = user.Name;
-                existingUser.Role = user.Role;
-                existingUser.Password = user.Password;
-                existingUser.Team = user.Team;
+                existingUser.emp_email = user.emp_email;
+                existingUser.emp_phone = user.emp_phone;
+                existingUser.emp_fname = user.emp_fname;
+                existingUser.emp_lname = user.emp_lname;
+                existingUser.emp_pword = user.emp_pword;
             }
             dataContext.SaveChanges();
         }

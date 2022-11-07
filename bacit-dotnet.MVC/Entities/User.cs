@@ -1,4 +1,4 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bacit_dotnet.MVC.Entities
 {

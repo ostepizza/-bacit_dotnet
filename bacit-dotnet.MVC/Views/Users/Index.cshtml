@@ -5,27 +5,27 @@
     <ul>
         <li>
             <label for="Name">Navn</label>
-            <input type="text" name="Name" value="@Model.Name" />
+            <input type="text" name="Name" value="" />
         </li>
         <li>
             <label for="Password">Passord</label>
-            <input type="password" name="Password" value="@Model.Password" />
+            <input type="password" name="Password" value="" />
         </li>
         <li>
             <label for="Email">Email</label>
-            <input type="email" name="Email" value="@Model.Email" />
+            <input type="email" name="Email" value="" />
         </li>
         <li>
             <label for="EmployeeNumber">Ansattnummer</label>
-            <input type="text" name="EmployeeNumber" value="@Model.EmployeeNumber" />
+            <input type="text" name="EmployeeNumber" value="" />
         </li>
         <li>
             <label for="Team">Team</label>
-            <input type="text" name="Team" value="@Model.Team" />
+            <input type="text" name="Team" value="" />
         </li>
         <li>
             <label for="Role">Role</label>
-            <input type="Text" name="Role" value="@Model.Role" />
+            <input type="Text" name="Role" value="" />
         </li>
         <li>
             <input type="submit" value="Lagre" />
@@ -37,19 +37,19 @@
         <td>Name</td>
         <td>Email</td>
     </tr>
-    @foreach (var user in Model.Users)
+    @foreach (var user in Model.Users)//
     {
         <tr>
-            <td>@user.Name</td>
-            <td>@user.Email</td>
+            <td>@user.emp_fname</td>
+            <td>@user.emp_email</td>
             <td><form  asp-action="delete" asp-controller="users" method="post">
-                <input type="hidden" name="Email" value="@user.Email"/>
+                <input type="hidden" name="Email" value=""/>
                 <input type="submit" value="Slett"/>
             </form>
             </td>
             <td>
                 <form asp-action="index" asp-controller="users" method="get">
-                    <input type="hidden" name="Email" value="@user.Email" />
+                    <input type="hidden" name="Email" value="" />
                     <input type="submit" value="Endre" />
                 </form>
             </td>

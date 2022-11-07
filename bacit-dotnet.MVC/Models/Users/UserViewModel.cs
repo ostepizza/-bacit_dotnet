@@ -6,6 +6,8 @@ namespace bacit_dotnet.MVC.Models.Users
     public class UserViewModel
     {
 
+        public int emp_nr { get; set; }
+        
         public string emp_fname { get; set; }
 
         public string emp_lname { get; set; }
