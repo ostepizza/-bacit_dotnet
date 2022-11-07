@@ -11,19 +11,18 @@ namespace bacit_dotnet.MVC.Repositories
         }
         public void Save(UserEntity user)
         {
-            var existingUser = GetUserByEmail(user.Email);
+            var existingUser = GetUserByEmail(user.emp_email);
             if (existingUser == null)
             {
                 users.Add(user);
             }
             else
             {
-                existingUser.Email = user.Email;
-                existingUser.EmployeeNumber = user.EmployeeNumber;
-                existingUser.Name = user.Name;
-                existingUser.Role = user.Role;
-                existingUser.Password = user.Password;
-                existingUser.Team = user.Team;
+                existingUser.emp_email = user.emp_email;
+                existingUser.emp_fname = user.emp_fname;
+                existingUser.emp_lname = user.emp_lname;
+                existingUser.emp_phone = user.emp_phone;
+                existingUser.emp_pword = user.emp_pword;
             }
         }
 
@@ -45,7 +44,7 @@ namespace bacit_dotnet.MVC.Repositories
         {
             return users
                              .FirstOrDefault(user =>
-                             user.Email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
+                             user.emp_email.Equals(email, StringComparison.InvariantCultureIgnoreCase));
         }
     }
 }

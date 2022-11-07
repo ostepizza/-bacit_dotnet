@@ -18,17 +18,18 @@ namespace bacit_dotnet.MVC.DataAccess
         {
             using var connection = new MySqlConnection(config.GetConnectionString("MariaDB"));
             connection.Open();
-            var reader = ReadData("Select id, name, email, employeenumber, team, role from users;", connection);
+            var reader = ReadData("Select emp_nr, emp_fname, emp_lname, emp_email, emp_phone, emp_pword from users;", connection);
             var users = new List<UserEntity>();
             while (reader.Read())
             {
                 var user = new UserEntity();
-                user.Id = reader.GetInt32("id");
-                user.Name = reader.GetString(1);
-                user.Email = reader.GetString(2);
-                user.EmployeeNumber = reader.GetString(3);
-                user.Team = reader.GetString(4);
-                user.Role = reader.GetString(5);
+                user.emp_nr = reader.GetInt32("emp_nr");
+                user.emp_fname = reader.GetString(1);
+                user.emp_lname = reader.GetString(2);
+                user.emp_email = reader.GetString(3);
+                user.emp_phone = reader.GetString(4);
+                user.emp_pword = reader.GetString(5);
+
                 Console.WriteLine(reader.GetString(3));
                 users.Add(user);
             }

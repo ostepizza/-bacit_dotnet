@@ -6,13 +6,20 @@ namespace bacit_dotnet.MVC.Models.Users
     public class UserViewModel
     {
 
-        public string Name { get; set; }
-        public string Password { get; set; }
-        public string Email { get; set; }
-        public string EmployeeNumber { get; set; }
-        public string Team { get; set; }
-        public string Role { get; set; }
+        public int emp_nr { get; set; }
+        
+        public string emp_fname { get; set; }
+
+        public string emp_lname { get; set; }
+
+        public string emp_email { get; set; }
+
+        public string emp_phone { get; set; }
+
+        public string emp_pword { get; set; }
+
         public List<string> AvailableRoles { get; set; }
+
         public string ValididationErrorMessage { get; set; }
 
         public IEnumerable<UserEntity> Users { get; set; }

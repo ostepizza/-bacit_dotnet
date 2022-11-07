@@ -28,11 +28,11 @@ namespace bacit_dotnet.MVC.Repositories
             }
         }
 
-        private UserEntity GetUserByEmail(string email)
+        private UserEntity GetUserByEmail(string emp_email)
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                return connection.QueryFirstOrDefault<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users where email like @emailParameter; ", new { emailParameter = email });
+                return connection.QueryFirstOrDefault<UserEntity>("Select emp_nr, emp_fname, emp_lname, emp_email,emp_phone,emp_pword from users where email like @emailParameter; ", new { emailParameter = emp_email });
             }
         }
 
@@ -40,19 +40,19 @@ namespace bacit_dotnet.MVC.Repositories
         {
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
-                var users = connection.Query<UserEntity>("Select id, Name, Email, Password,EmployeeNumber,Team, Role from users;"); //Regular Dapper
+                var users = connection.Query<UserEntity>("Select emp_nr, emp_fname, emp_lname, emp_email,emp_phone, emp_pword from users;"); //Regular Dapper
                 return users.ToList();
             }
         }
 
         public void Save(UserEntity user)
         {
-            var existingUser = GetUserByEmail(user.Email);
+            var existingUser = GetUserByEmail(user.emp_email);
             using (var connection = sqlConnector.GetDbConnection() as MySqlConnection)
             {
                 if (existingUser != null)
                 {
-                    user.Id = existingUser.Id; // set this so the update-magic knows what record to update. 
+                    user.emp_nr = existingUser.emp_nr; // set this so the update-magic knows what record to update. 
                     connection.Update<UserEntity>(user); //Dapper.Contrib
                 }
                 else
