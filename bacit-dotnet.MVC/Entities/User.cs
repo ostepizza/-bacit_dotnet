@@ -1,4 +1,4 @@
-﻿ using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace bacit_dotnet.MVC.Entities
 {
@@ -16,5 +16,9 @@ namespace bacit_dotnet.MVC.Entities
         public string emp_phone { get; set; }
 
         public string emp_pword { get; set; }
+
+        public TeamEntity team_id { get; set; }
+
+        public bool emp_active { get; set; }
     }
 }

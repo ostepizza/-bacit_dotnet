@@ -6,6 +6,8 @@ namespace bacit_dotnet.MVC.DataAccess
     public interface ISqlConnector
     {
         IEnumerable<UserEntity> GetUsers();
+        IEnumerable<UserEntity> GetSuggestions();
+        IEnumerable<UserEntity> GetRepairs();
         IDbConnection GetDbConnection();
 
     }

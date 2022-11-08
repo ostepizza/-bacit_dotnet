@@ -29,7 +29,6 @@ namespace bacit_dotnet.MVC.Controllers
             return View("Users", model);
         }
         
-
         [HttpGet]
         public IActionResult Index()
         {

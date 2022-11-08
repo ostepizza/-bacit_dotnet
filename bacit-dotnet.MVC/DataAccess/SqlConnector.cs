@@ -36,6 +36,48 @@ namespace bacit_dotnet.MVC.DataAccess
             connection.Close();
             return users;
         }
+        
+        public IEnumerable<SuggestionEntity> GetSuggestions()
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDB"));
+            connection.Open();
+            var reader = ReadData("Select suggestion_id, suggestion_title, suggestion_description, suggestion_deadline, suggestion_enddate from suggestions");
+            var suggestions = new List<SuggestionEntity>();
+            while (reader.Read())
+            {
+                var suggestion = new SuggestionEntity();
+                suggestion.suggestion_id = reader.GetInt32("suggestion_id");
+                suggestion.suggestion_title = reader.GetString(1);
+                suggestion.suggestion_description = reader.GetString(2);
+                suggestion.suggestion_deadline = reader.GetInt32()
+                suggestion.suggestion_enddate = reader.GetInt32()
+                suggestions.Add(suggestion);
+            }
+            connection.Close();
+            return suggestions;
+        }
+        
+        public IEnumerable<RepairEntity> GetRepairs()
+        {
+            using var connection = new MySqlConnection(config.GetConnectionString("MariaDB"));
+            connection.Open();
+            var reader = ReadData("Select repair_id, repair_title, repair_description, repair_deadline, repair_enddate from repairs");
+            var repairs = new List<RepairEntity>();
+            while (reader.Read())
+            {
+                var repair = new RepairEntity();
+                repair.repair_id = reader.GetString("repair_id")
+                repair.repair_title = reader.GetString(1);
+                repair.repair_description = reader.GetString(2);
+                repair.repairs_deadline = reader.GetInt32();
+                repair.repairs_enddate = reader.GetInt32();
+                repairs.Add(repair);
+            }
+            connection.Close();
+            return repairs;
+        }
+        
+        public IEnumerable
 
         public IDbConnection GetDbConnection()
         {
