@@ -11,6 +11,8 @@
 
     .buttnContainer {
         padding: 30px;
+        
+
 
     }
 
@@ -21,6 +23,8 @@
         height: 50px;
         margin-top: 10px;
         border-radius: 5px; 
+        
+       
        
 
     }
@@ -41,6 +45,7 @@
         margin-top: 10px;
         border-radius: 5px;
         
+        
         }
 
         #redigerBtn:hover {
@@ -59,16 +64,23 @@
     <div class="buttnContainer">
         <label>Legg til ny bruker</label>
         <br />
-        <button id="leggTilBtn">Legg til</button>
+        <button id="leggTilBtn" onclick="location.href='@Url.Action("Add", "Users")'">Legg til</button>
+       
+       
+        
+
     </div>
+
+
     <div class="buttnContainer">
         <br />
         <label>Rediger eksisterende bruker</label>
         <br />
-        <button id="redigerBtn">Rediger</button>
+        <button id="redigerBtn" onclick="location.href='@Url.Action("Rediger", "Users")'">Rediger</button>
+        
     </div>
 
-    
+
 </div>
 
 
