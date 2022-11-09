@@ -12,6 +12,7 @@ CREATE TABLE `employees` (
     `team_id` INT(11) NULL,
     `emp_pword` VARCHAR(255) NOT NULL,
     `emp_active` TINYINT(1) NOT NULL DEFAULT '1',
+    `emp_superuser` TINYINT(1) NOT NULL DEFAULT '1',
     PRIMARY KEY (`emp_nr`),
     UNIQUE (`emp_email`)
 );
@@ -28,15 +29,6 @@ CREATE TABLE `teams` (
 
 -- Adds foreign key between employees and teams
 ALTER TABLE `employees` ADD FOREIGN KEY (`team_id`) REFERENCES teams(`team_id`);
-
--- Create table for superusers
-CREATE TABLE `superusers` (
-    `su_id` INT(11) NOT NULL AUTO_INCREMENT,
-    `emp_nr` INT(11) NOT NULL,
-    PRIMARY KEY (`su_id`),
-    UNIQUE (`emp_nr`),
-    FOREIGN KEY (`emp_nr`) REFERENCES employees(`emp_nr`)
-);
 
 -- Create table for statuses
 CREATE TABLE `status` (
@@ -104,15 +96,12 @@ CREATE TABLE `commentrep` (
 
 -- CREATING EXAMPLE INFO
 -- Adding employees
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('000', 'Super', 'User', NULL, NULL, NULL, '1234', 1);
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('001', 'Jens', 'Jensemann', NULL, NULL, NULL, '4321', 1);
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('002', 'Burg', 'Burgers', NULL, NULL, NULL, '9999', 1);
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('003', 'Jan', 'Banan', NULL, NULL, NULL, '8888', 0);
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('004', 'Jeff', 'Pringle', NULL, NULL, NULL, '7777', 1);
-INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`) VALUES ('005', 'Lucky', 'Luke', NULL, NULL, NULL, '5555', 1);
-
--- Adding a superuser
-INSERT INTO `superusers` (`su_id`, `emp_nr`) VALUES (NULL, '000');
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('000', 'Super', 'User', NULL, NULL, NULL, '1234', 1, 1);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('001', 'Jens', 'Jensemann', NULL, NULL, NULL, '4321', 1, 0);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('002', 'Burg', 'Burgers', NULL, NULL, NULL, '9999', 1, 0);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('003', 'Jan', 'Banan', NULL, NULL, NULL, '8888', 0, 0);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('004', 'Jeff', 'Pringle', NULL, NULL, NULL, '7777', 1, 0);
+INSERT INTO `employees` (`emp_nr`, `emp_fname`, `emp_lname`, `emp_phone`, `emp_email`, `team_id`, `emp_pword`, `emp_active`, `emp_superuser`) VALUES ('005', 'Lucky', 'Luke', NULL, NULL, NULL, '5555', 1, 0);
 
 -- Shows that the new IT user is also on the superuser-table and which superuser-id the user has received
 SELECT employees.emp_nr, employees.emp_fname, employees.emp_lname, superusers.emp_nr, superusers.su_id 

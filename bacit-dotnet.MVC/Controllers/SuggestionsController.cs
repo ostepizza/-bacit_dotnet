@@ -19,5 +19,15 @@ namespace bacit_dotnet.MVC.Controllers
                 throw new ArgumentException();
             return null;
         }
+
+        public IActionResult Add()
+        {
+            return View();
+        }
+
+        public IActionResult Detailed()
+        {
+            return View();
+        }
     }
 }

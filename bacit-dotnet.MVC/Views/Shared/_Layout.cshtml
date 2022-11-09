@@ -23,14 +23,15 @@
                     Logged in as USER<br>
                     Last activity: timestamp
                 </div>
-                    <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><div class="btn">Hjem</div></a>
-                    <a class="nav-link" asp-area="" asp-controller="Repairs" asp-action="Index" ><div class="btn">Reparasjoner</div></a>
-                    <a class="nav-link" asp-area="" asp-controller="Suggestions" asp-action="Index" ><div class="btn">Forslag</div></a>
-                    <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Index" ><div class="btn">Min konto</div></a>
-                    <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index" ><div class="btn btn-last">Admin</div></a>
-                <div class="menu"><img src="img/logo.svg"></div>
-                    <a class="nav-link" asp-area="" asp-controller="Logout" asp-action="Index"><div class="btn">Logg ut</div></a>
-                </div>
+                <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index"><div class="btn">Hjem</div></a>
+                <a class="nav-link" asp-area="" asp-controller="Teams" asp-action="Index"><div class="btn">Teams</div></a>
+                <a class="nav-link" asp-area="" asp-controller="Repairs" asp-action="Index"><div class="btn">Reparasjoner</div></a>
+                <a class="nav-link" asp-area="" asp-controller="Suggestions" asp-action="Index"><div class="btn">Forslag</div></a>
+                <a class="nav-link" asp-area="" asp-controller="Account" asp-action="Index"><div class="btn">Min konto</div></a>
+                <a class="nav-link" asp-area="" asp-controller="Admin" asp-action="Index"><div class="btn btn-last">Admin</div></a>
+                <div class="menu"><img src="/img/logo.svg"></div>
+                <a class="nav-link" asp-area="" asp-controller="Logout" asp-action="Index"><div class="btn">Logg ut</div></a>
+            </div>
             
             <div class="col-lg-2 menu mobileShow" style="height: auto;">    
                 <nav class="navbar navbar-light">
@@ -45,6 +46,9 @@
                     <ul class="navbar-nav mr-auto">';
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Home" asp-action="Index" >Hjem</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-area="" asp-controller="Teams" asp-action="Index">Teams</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" asp-area="" asp-controller="Repairs" asp-action="Index" >Reparasjoner</a>
