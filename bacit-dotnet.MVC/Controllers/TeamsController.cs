@@ -10,7 +10,7 @@ namespace bacit_dotnet.MVC.Controllers
             return View();
         }
 
-        public IActionResult New()
+        public IActionResult Add()
         {
             return View();
         }
