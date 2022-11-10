@@ -56,5 +56,10 @@ namespace bacit_dotnet.MVC.Controllers
             userRepository.Delete(email);
             return RedirectToAction("Index");
         }
+        public IActionResult Add()
+        {
+            return View();
+        }
+                
     }
 }
