@@ -1,3 +1,10 @@
+@using bacit_dotnet.MVC.Models.Login
+@model LoginViewModel
+
+@{
+    Layout = null;
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -7,10 +14,6 @@
     
     <link reL="shortcut icon" href="../assets/img/favicon.png" type="image/ico">
     <title>Logg inn</title>
-
-    @{
-       Layout = null;
-}
     
     <!-- STYLESHEETS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
@@ -18,13 +21,17 @@
     <link href="https://fonts.googleapis.com/css?family=Lato|Open+Sans|Raleway|Roboto" rel="stylesheet">
 </head>
 <body class="text-center">
+    @using (Html.BeginForm("Index", "Login", FormMethod.Post))
+    {
     <form class="form-signin" action="" method="post">
         <img class="mb-4 imglogo" src="img/logo.svg">
         <h1 class="h3 mb-3 font-weight-normal">Vennligst logg inn</h1>
         <!--<label for="inputEmail" class="sr-only">Ansattnummer</label>-->
-        <input name="ansattNr" type="text" id="inputEmail" class="form-control" placeholder="Ansattnummer" required autofocus>
+        @Html.TextBoxFor(m => m.employeeNr, new { placeholder = Html.DisplayNameFor(m => m.employeeNr), @class = "form-control" })
+        <!--<input name="ansattNr" type="text" id="inputEmail" class="form-control" placeholder="Ansattnummer" required autofocus>-->
         <!--<label for="inputPassword" class="sr-only">Passord</label>-->
-        <input name="password" type="password" id="inputPassword" class="form-control" placeholder="Passord" required>
+        @Html.PasswordFor(m => m.password, new { placeholder = Html.DisplayNameFor(m => m.password), @class = "form-control" })
+        <!--<input name="password" type="password" id="inputPassword" class="form-control" placeholder="Passord" required>-->
         <!--<div class="checkbox mb-3">
                 <label>
                     <input type="checkbox" value="remember-me"> Remember me
@@ -34,8 +41,12 @@
         <!--<div class="loggedout abovebtn">You have been successfully logged out.</div>-->
                 
         <!--<div class="loggedout abovebtn">You have been timed out.</div>-->
-        <button class="btn btn-lg btn-primary btn-block" name="loginBtn" type="submit">Logg inn</button>
+            <button class="btn btn-lg btn-primary btn-block" name="loginBtn" type="submit" value="Submit">Logg inn</button>
+            @Html.ValidationMessageFor(m => m.employeeNr, "", new { @class = "error" })
+            @Html.ValidationMessageFor(m => m.password, "", new { @class = "error" })
+
         <p class="mt-5 mb-3">&copy; some copyright 2014-2077</p>
     </form>
+    }
 </body>
 </html>
